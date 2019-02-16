@@ -6,10 +6,15 @@
   "author": "antoine prudhomme <antoine.prudhomme@spendesk.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "dotenv": "^6.2.0"
+    "dotenv": "^6.2.0",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0"
   }
 }
