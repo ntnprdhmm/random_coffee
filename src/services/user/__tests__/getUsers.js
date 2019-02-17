@@ -1,7 +1,7 @@
 const slackProvider = require('../../../providers/slack');
 jest.mock('../../../providers/slack');
 
-const { get } = require('../index');
+const { getUsers } = require('../index');
 const {
   botUser,
   basicUser,
@@ -10,14 +10,14 @@ const {
   basicUserReshaped,
 } = require('../__fixtures__/reshapedUsers');
 
-describe('get', () => {
+describe('getUsers', () => {
   describe('given that the slack provider throw an error', () => {
     slackProvider.fetchUsers.mockImplementationOnce(() => Promise.reject(
       'error from test',
     ));
 
     it('should recover by returning an empty list', async () => {
-      const users = await get();
+      const users = await getUsers();
       expect(users).toEqual([]);
     });
   });
@@ -27,7 +27,7 @@ describe('get', () => {
       slackProvider.fetchUsers.mockImplementationOnce(() => Promise.resolve([]));
 
       it('should return an empty list', async () => {
-        const users = await get();
+        const users = await getUsers();
         expect(users).toEqual([]);
       });
     });
@@ -39,7 +39,7 @@ describe('get', () => {
       ]));
 
       it('should return an empty list', async () => {
-        const users = await get();
+        const users = await getUsers();
         expect(users).toEqual([basicUserReshaped]);
       });
     });
