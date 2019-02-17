@@ -28,6 +28,6 @@ const getRandomUsers = async (numberToPick = 3) => {
 };
 
 module.exports = {
-  get: getUsers,
-  getRandom: getRandomUsers,
+  getUsers,
+  getRandomUsers,
 };
